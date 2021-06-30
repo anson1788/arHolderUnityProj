@@ -30,13 +30,16 @@ public class ARPlacment : MonoBehaviour
     public float laserWidth = 0.1f;
     public float laserMaxLength = 5f;
 
+
+    public Text txt;
+
     // Start is called before the first frame update
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         aRPlaneManager = FindObjectOfType<ARPlaneManager>();
 
-
+         txt.enabled = true;
      
     }
 
@@ -46,7 +49,6 @@ public class ARPlacment : MonoBehaviour
         if(spawnedObject == null && placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             ARPlaceObject();
-            showToast("Hello", 2);
         }
         if(spawnedObject == null){
             UpdatePlacementPose();
@@ -54,7 +56,7 @@ public class ARPlacment : MonoBehaviour
         }else{
              placementIndicator.SetActive(false);
              updateSpawnRandomMove();
-             DetectingIsObjectHit();
+             //DetectingIsObjectHit();
         }
 
     }
@@ -67,21 +69,17 @@ public class ARPlacment : MonoBehaviour
           if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
              
              var touch = Input.GetTouch(0);     
-              Ray ray = Camera.current.ScreenPointToRay(touch.position);
+              Ray ray = Camera.main.ScreenPointToRay(touch.position);
               RaycastHit hit;
                  
               if (Physics.Raycast(ray, out hit)){
-                  
-
-                        Vector3 incomingVec = hit.point - Camera.current.transform.position;
+                
+                        Vector3 incomingVec = hit.point - Camera.main.transform.position;
                         // Use the point's normal to calculate the reflection vector.
                         Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
-                        Debug.DrawLine(Camera.current.transform.position, hit.point, Color.red);
+                        Debug.DrawLine(Camera.main.transform.position, hit.point, Color.red);
                         Debug.DrawRay(hit.point, reflectVec, Color.green);
-                       
-                        showToast(hit.transform.parent.gameObject.tag, 2);     
-    
-                  
+
               }
           }
 
@@ -102,66 +100,8 @@ public class ARPlacment : MonoBehaviour
      }
 
 
-    public Text txt;
-    void showToast(string text,
-        int duration)
-    {
-        StartCoroutine(showToastCOR(text, duration));
-    }
 
-    private IEnumerator showToastCOR(string text,
-        int duration)
-    {
-        Color orginalColor = Color.white;
 
-        txt.text = text;
-        txt.enabled = true;
-
-        //Fade in
-        yield return fadeInAndOut(txt, true, 0.5f);
-
-        //Wait for the duration
-        float counter = 0;
-        while (counter < duration)
-        {
-            counter += Time.deltaTime;
-            yield return null;
-        }
-
-        //Fade out
-        yield return fadeInAndOut(txt, false, 0.5f);
-
-        txt.enabled = false;
-        txt.color = orginalColor;
-    }
-
-    IEnumerator fadeInAndOut(Text targetText, bool fadeIn, float duration)
-    {
-        //Set Values depending on if fadeIn or fadeOut
-        float a, b;
-        if (fadeIn)
-        {
-            a = 0f;
-            b = 1f;
-        }
-        else
-        {
-            a = 1f;
-            b = 0f;
-        }
-
-        Color currentColor = Color.clear;
-        float counter = 0f;
-
-        while (counter < duration)
-        {
-            counter += Time.deltaTime;
-            float alpha = Mathf.Lerp(a, b, counter / duration);
-
-            targetText.color =  Color.white;
-            yield return null;
-        }
-    }
     void UpdatePlacementIndicator(){
          if(spawnedObject == null  && placementPoseIsValid){
              placementIndicator.SetActive(true);
@@ -169,18 +109,19 @@ public class ARPlacment : MonoBehaviour
          }
     }
     void UpdatePlacementPose(){
-        var screenCenter = Camera.current.ViewportToScreenPoint(new Vector3(0.5f,0.5f));
+
+        var screenCenter = Camera.main.ViewportToScreenPoint(new Vector3(0.5f,0.5f));
         var hits = new List<ARRaycastHit>();
         aRRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
-
         placementPoseIsValid = hits.Count > 0;
         if(placementPoseIsValid)
         {
             PlacementPose = hits[0].pose;
-
             ARPlane plane = aRPlaneManager.GetPlane(hits[0].trackableId);
             planeNormal = plane.normal ;
             planeNormal = Quaternion.Euler(-90, 0, 0) * planeNormal;
+        }else{
+          
         }
 
     }

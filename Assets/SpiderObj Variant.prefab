@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 8501160690239044363, guid: fcdede83e56894d769f567c0a8fcabae,
         type: 3}
       propertyPath: m_Name
-      value: SpiderObj
+      value: SpiderObj Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdede83e56894d769f567c0a8fcabae, type: 3}
