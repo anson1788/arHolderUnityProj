@@ -17,8 +17,8 @@ public class ARPlacment : MonoBehaviour
     private bool placementPoseIsValid = false;
 
 
-    public Transform startMarker;
-    public Transform endMarker;
+    private Transform startMarker;
+    private Transform endMarker;
 
     public float speed = 0.0001f;
     private float startTime;
@@ -37,10 +37,7 @@ public class ARPlacment : MonoBehaviour
         aRPlaneManager = FindObjectOfType<ARPlaneManager>();
 
 
-        Vector3[] initLaserPositions = new Vector3[ 2 ] { Vector3.zero, Vector3.zero };
-        laserLineRenderer.SetPositions( initLaserPositions );
-        laserLineRenderer.SetWidth( laserWidth, laserWidth );
-        laserLineRenderer.enabled = true;
+     
     }
 
     // Update is called once per frame

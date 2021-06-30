@@ -594,8 +594,6 @@ MonoBehaviour:
   arObjectToSpawn: {fileID: 8207531194858744959, guid: 1fa8173fa91514491b295874309f4a14,
     type: 3}
   placementIndicator: {fileID: 913532707}
-  startMarker: {fileID: 0}
-  endMarker: {fileID: 0}
   speed: 1
   laserLineRenderer: {fileID: 0}
   laserWidth: 0.1
