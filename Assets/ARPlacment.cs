@@ -9,7 +9,11 @@ public class ARPlacment : MonoBehaviour
 {
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
+    public GameObject flashPreb;
+
+    public GameObject targetPoint;
     private GameObject spawnedObject;
+
 
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
@@ -26,9 +30,7 @@ public class ARPlacment : MonoBehaviour
 
     private Vector3 planeNormal;
 
-    public LineRenderer laserLineRenderer;
-    public float laserWidth = 0.1f;
-    public float laserMaxLength = 5f;
+
 
 
     public Text txt;
@@ -48,7 +50,7 @@ public class ARPlacment : MonoBehaviour
     {
         if(spawnedObject == null && placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            ARPlaceObject();
+           ARPlaceObject();
         }
         if(spawnedObject == null){
             UpdatePlacementPose();
@@ -59,6 +61,15 @@ public class ARPlacment : MonoBehaviour
              //DetectingIsObjectHit();
         }
 
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
+        
+                GameObject f;
+                f = Instantiate(flashPreb,targetPoint.transform,false);
+                
+                Destroy(f,1);
+        }
+
+        
     }
 
 
@@ -84,20 +95,6 @@ public class ARPlacment : MonoBehaviour
           }
 
     }
-
-   void ShootLaserFromTargetPosition( Vector3 targetPosition, Vector3 direction, float length )
-     {
-         Ray ray = new Ray( targetPosition, direction );
-         RaycastHit raycastHit;
-         Vector3 endPosition = targetPosition + ( length * direction );
- 
-         if( Physics.Raycast( ray, out raycastHit, length ) ) {
-             endPosition = raycastHit.point;
-         }
- 
-         laserLineRenderer.SetPosition( 0, targetPosition );
-         laserLineRenderer.SetPosition( 1, endPosition );
-     }
 
 
 
