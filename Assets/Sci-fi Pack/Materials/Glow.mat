@@ -68,6 +68,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Cutout: 0
+    - Cutout_Density: 40
     - Cutout_S: 0.5
     - Scale: 30
     - _AlphaClip: 0

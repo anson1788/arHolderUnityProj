@@ -166,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 1378013593883861407, guid: 27d950eba695a48949dc2c573ca59238,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1378013593883861407, guid: 27d950eba695a48949dc2c573ca59238,
         type: 3}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247856249}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,9 +237,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 275083807}
   - {fileID: 1833444741}
   m_Father: {fileID: 1497607936}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275083806
 GameObject:
@@ -265,11 +266,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275083806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0484, z: 0.9}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children: []
-  m_Father: {fileID: 1497607936}
+  m_Father: {fileID: 247856249}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &275083808
@@ -797,6 +798,9 @@ MonoBehaviour:
   placementIndicator: {fileID: 913532707}
   flashPreb: {fileID: 1881108424968042130, guid: 6b06a6f9b2660494e97657ce48d5c47c,
     type: 3}
+  reticleObj: {fileID: 275083806}
+  shooterBall: {fileID: 8546591505651860602, guid: 1bb7986aedbf44cd9b4b4c32dce419d0,
+    type: 3}
   targetPoint: {fileID: 247856248}
   speed: 1
   txt: {fileID: 1615162916}
@@ -932,7 +936,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -13.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 275083807}
   - {fileID: 247856249}
   m_Father: {fileID: 2108980100}
   m_RootOrder: 0

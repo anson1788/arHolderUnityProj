@@ -10,6 +10,10 @@ public class ARPlacment : MonoBehaviour
     public GameObject arObjectToSpawn;
     public GameObject placementIndicator;
     public GameObject flashPreb;
+    public GameObject reticleObj;
+    public GameObject shooterBall;
+
+
 
     public GameObject targetPoint;
     private GameObject spawnedObject;
@@ -61,12 +65,20 @@ public class ARPlacment : MonoBehaviour
              //DetectingIsObjectHit();
         }
 
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began){
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetKey("up")){
         
                 GameObject f;
                 f = Instantiate(flashPreb,targetPoint.transform,false);
-                
+        
                 Destroy(f,1);
+       
+           
+              
+                GameObject P;
+                P =  Instantiate(shooterBall,targetPoint.transform,false);
+                var Rel = (reticleObj.transform.position- Camera.main.transform.position).normalized;
+                P.GetComponent<Rigidbody>().velocity = Rel * 35.0f;
+                Destroy(P,2);
         }
 
         
