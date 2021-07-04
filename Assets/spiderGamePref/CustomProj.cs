@@ -28,6 +28,13 @@ public class CustomProj : MonoBehaviour
         GameObject E = Instantiate(Explosion, transform.position, Explosion.transform.rotation);
         Destroy(E, TimerEXP);
     }
+    void Update()
+    {
+        if(gameObject.transform.position.z>4.0f){
+            Destroy(gameObject);
+        }
+            Debug.Log("print data out" + gameObject.transform.position.z);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         
