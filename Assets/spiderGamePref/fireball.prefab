@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2838299878787705173}
   - component: {fileID: 6474598480013473314}
   - component: {fileID: 4211044513169838838}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: Expansive Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9521,10 +9521,10 @@ GameObject:
   - component: {fileID: 8546591505651860603}
   - component: {fileID: 8687974727522645617}
   - component: {fileID: 7415940998836791616}
-  - component: {fileID: 7434029216402071365}
-  m_Layer: 1
+  - component: {fileID: -2864489808865961403}
+  m_Layer: 0
   m_Name: fireball
-  m_TagString: Untagged
+  m_TagString: fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9537,8 +9537,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8546591505651860602}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: -0.055, z: 2}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2296081073432195107}
   - {fileID: 2838299878787705173}
@@ -9553,7 +9553,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8546591505651860602}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9628,7 +9628,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -13325,7 +13325,7 @@ ParticleSystem:
     radiusScale: 1
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 3
       emitter: {fileID: 6312650182464838290}
@@ -14334,7 +14334,7 @@ SphereCollider:
   m_GameObject: {fileID: 8546591505651860602}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
@@ -14354,7 +14354,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7434029216402071365
+--- !u!114 &-2864489808865961403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14363,7 +14363,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8546591505651860602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73035641093d5264b892624c572cec3d, type: 3}
+  m_Script: {fileID: 11500000, guid: cb23c79a6cfb24dcdab28017979a989d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 8427985675471083998, guid: 4061a53f382a2234e81531efaf0c4991,

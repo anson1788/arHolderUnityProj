@@ -14,7 +14,6 @@ public class ARPlacment : MonoBehaviour
     public GameObject shooterBall;
 
 
-
     public GameObject targetPoint;
     private GameObject spawnedObject;
 
@@ -71,14 +70,27 @@ public class ARPlacment : MonoBehaviour
                 f = Instantiate(flashPreb,targetPoint.transform,false);
         
                 Destroy(f,1);
-       
+               
            
-              
-                GameObject P;
-                P =  Instantiate(shooterBall,targetPoint.transform,false);
-                var Rel = (reticleObj.transform.position- Camera.main.transform.position).normalized;
-                P.GetComponent<Rigidbody>().velocity = Rel * 35.0f;
-                Destroy(P,2);
+                var shoot = targetPoint.transform.Find("fireball");
+                var shoot2 = targetPoint.transform.Find("fireball(Clone)");
+                if (shoot == null  && shoot2 == null){
+                    Debug.Log("firee aat 11");
+                    GameObject P;
+                    P =  Instantiate(shooterBall,targetPoint.transform,false);
+                    //P =  Instantiate(shooterBall, targetPoint.transform.position , Quaternion.identity);
+                    P.transform.parent = targetPoint.transform;
+                    var Rel = (reticleObj.transform.position- P.transform.position ).normalized;
+                    P.GetComponent<Rigidbody>().velocity = Rel * 10.0f;
+                    txt.text = "Shoot position : ("+ P.transform.position.x + "," + P.transform.position.y + ", "+ P.transform.position.z + ")\n";
+                    
+                    if(spawnedObject!=null){
+                       txt.text += "spider position : ("+ spawnedObject.transform.position.x + "," + spawnedObject.transform.position.y + ", "+ spawnedObject.transform.position.z + ")";     
+                       txt.text += "reticle position : ("+ reticleObj.transform.position.x + "," + reticleObj.transform.position.y + ", "+ reticleObj.transform.position.z + ")";                           
+                       txt.text += "reticle position : ("+ targetPoint.transform.position.x + "," + targetPoint.transform.position.y + ", "+ targetPoint.transform.position.z + ")";                           
+                    }    
+                }
+             
         }
 
         
